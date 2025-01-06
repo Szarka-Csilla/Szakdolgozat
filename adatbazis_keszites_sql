@@ -1,0 +1,125 @@
+CREATE TABLE felhasznalok
+(
+    emailCim VARCHAR(50) COLLATE utf8mb4_hungarian_ci  NOT NULL,
+    nev VARCHAR(50) COLLATE utf8mb4_hungarian_ci  NOT NULL,
+    jelszo VARCHAR(50) COLLATE utf8mb4_hungarian_ci  NOT NULL,
+    telSzam VARCHAR(11) COLLATE utf8mb4_hungarian_ci  NOT NULL,
+
+    PRIMARY KEY (emailCim)
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
+
+CREATE TABLE tanterv
+(
+    targykod VARCHAR(20) COLLATE utf8mb4_hungarian_ci  NOT NULL,
+    szervEgys VARCHAR(20) COLLATE utf8mb4_hungarian_ci  NOT NULL,
+    evszak VARCHAR(7) COLLATE utf8mb4_hungarian_ci  NOT NULL,
+    targynev VARCHAR(50) COLLATE utf8mb4_hungarian_ci  NOT NULL,
+    tipus VARCHAR(20) COLLATE utf8mb4_hungarian_ci  NOT NULL,
+    kredit TINYINT COLLATE utf8mb4_hungarian_ci  NOT NULL,
+    oraszamNap VARCHAR(15) COLLATE utf8mb4_hungarian_ci  NOT NULL,
+    oraszamLev VARCHAR(15) COLLATE utf8mb4_hungarian_ci  NOT NULL,
+    kovetelmeny VARCHAR(30) COLLATE utf8mb4_hungarian_ci  NOT NULL,
+    evfolyam VARCHAR(20) COLLATE utf8mb4_hungarian_ci  NOT NULL,
+
+    PRIMARY KEY (targykod)
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
+
+CREATE TABLE jogosultsag
+(
+    jogosultsag VARCHAR(20) COLLATE utf8mb4_hungarian_ci  NOT NULL,
+
+    PRIMARY KEY (jogosultsag)
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
+
+CREATE TABLE mostani
+(
+    targykod VARCHAR(20) COLLATE utf8mb4_hungarian_ci  NOT NULL,
+    teremigeny TEXT COLLATE utf8mb4_hungarian_ci  NOT NULL,
+    online VARCHAR(15) COLLATE utf8mb4_hungarian_ci  NOT NULL,
+    oktatoNap VARCHAR(30) COLLATE utf8mb4_hungarian_ci  NOT NULL,
+    oktatoLev VARCHAR(30) COLLATE utf8mb4_hungarian_ci  NOT NULL,
+    TImegjegyzes TEXT COLLATE utf8mb4_hungarian_ci  NOT NULL,
+    oktatoMegjegyzes TEXT COLLATE utf8mb4_hungarian_ci  NOT NULL,
+    tanev VARCHAR(10) COLLATE utf8mb4_hungarian_ci  NOT NULL,
+    utolsoBelepes BOOLEAN COLLATE utf8mb4_hungarian_ci  NOT NULL,
+
+    PRIMARY KEY (targykod),
+    INDEX (targykod),
+
+    FOREIGN KEY (targykod)
+        REFERENCES tanterv(targykod)
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
+
+CREATE TABLE szak
+(
+    szaknev VARCHAR(20) COLLATE utf8mb4_hungarian_ci  NOT NULL,
+    indul BOOLEAN COLLATE utf8mb4_hungarian_ci  NOT NULL,
+
+    PRIMARY KEY (szaknev)
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
+
+CREATE TABLE oktatja
+(
+    emailCim VARCHAR(50) COLLATE utf8mb4_hungarian_ci  NOT NULL,
+    targykod VARCHAR(20) COLLATE utf8mb4_hungarian_ci  NOT NULL,
+
+    PRIMARY KEY (emailCim, targykod),
+    INDEX (emailCim),
+    INDEX (targykod),
+
+    FOREIGN KEY (emailCim)
+        REFERENCES felhasznalok(emailCim),
+
+    FOREIGN KEY (targykod)
+        REFERENCES mostani(targykod)
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
+
+CREATE TABLE hozzafer
+(
+    szaknev VARCHAR(20) COLLATE utf8mb4_hungarian_ci  NOT NULL,
+    emailCim VARCHAR(50) COLLATE utf8mb4_hungarian_ci  NOT NULL,
+
+    PRIMARY KEY (szaknev, emailCim),
+    INDEX (szaknev),
+    INDEX (emailCim),
+
+    FOREIGN KEY (szaknev)
+        REFERENCES szak(szaknev),
+
+    FOREIGN KEY (emailCim)
+        REFERENCES felhasznalok(emailCim)
+
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
+
+CREATE TABLE rendelkezik
+(
+    emailCim VARCHAR(50) COLLATE utf8mb4_hungarian_ci  NOT NULL,
+    jogosultsag VARCHAR(20) COLLATE utf8mb4_hungarian_ci  NOT NULL,
+
+    PRIMARY KEY (emailCim, jogosultsag),
+    INDEX (emailCim),
+    INDEX (jogosultsag),
+
+    FOREIGN KEY (emailCim)
+        REFERENCES felhasznalok(emailCim),
+
+    FOREIGN KEY (jogosultsag)
+        REFERENCES jogosultsag(jogosultsag)
+
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
+
+CREATE TABLE tartozik
+(
+    szaknev VARCHAR(20) COLLATE utf8mb4_hungarian_ci  NOT NULL,
+    targykod VARCHAR(20) COLLATE utf8mb4_hungarian_ci  NOT NULL,
+
+    PRIMARY KEY (szaknev, targykod),
+    INDEX (szaknev),
+    INDEX (targykod),
+
+    FOREIGN KEY (szaknev)
+        REFERENCES szak(szaknev),
+
+    FOREIGN KEY (targykod)
+        REFERENCES tanterv(targykod)
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
