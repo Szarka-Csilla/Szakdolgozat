@@ -1,7 +1,7 @@
 <?php
     $servername = "localhost";
     $username = "root";
-    $password = "RootRoot1*";
+    $password = "*";
     //$dbname = "gyumi";
     $dbname = "teszt_app";
 
