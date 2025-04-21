@@ -416,7 +416,7 @@ function App() {
     console.log(emailRef.current);
     //elküldjük a belépési adatokat
     
-    fetch('http://localhost:8000/server.php', {
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', {
       method: 'POST',
       body: JSON.stringify({ email: emailRef.current, jelsz: jelszRef.current, mod: modRef.current }),
     })
@@ -493,7 +493,7 @@ function App() {
     modRef.current = "jelszoValt";
     if (ujJelsz.current == ujraJelsz.current)
     {
-      fetch('http://localhost:8000/server.php', {
+      fetch('https://szemeszterinditas-szerver.vercel.app/server.php', {
         method: 'POST',
         body: JSON.stringify({ emailCim: emailMost, regiJelsz: regiJelsz.current, ujJelsz: ujJelsz.current, mod: modRef.current }),
       })
@@ -527,7 +527,7 @@ function App() {
 
   const handleElfelejtettJelszo = () => {
     modRef.current = "elfelejtettJelszo";
-    fetch('http://localhost:8000/server.php', {
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', {
       method: 'POST',
       body: JSON.stringify({ emailCim: emailRef.current, mod: modRef.current }),
     })
@@ -550,7 +550,7 @@ function App() {
   const tablazatLekeres = () => {
     setMod("tablazatLekeres");
     modRef.current = "tablazatLekeres";
-    fetch('http://localhost:8000/server.php', {
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', {
       method: 'POST',
       body: JSON.stringify({ emailCim: emailMost, jogosultsag: bejelJog, mod: modRef.current }),
     })
@@ -583,7 +583,7 @@ function App() {
 
   const tablazatLekeresTanterv = () => {
     modRef.current = "tablazatLekeresTanterv";
-    fetch('http://localhost:8000/server.php', {
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', {
       method: 'POST',
       body: JSON.stringify({ mod: modRef.current }),
     })
@@ -617,7 +617,7 @@ function App() {
   const tablazatLekeresAktualis = () => {
     setMod("tablazatLekeresAktualis");
     modRef.current = "tablazatLekeresAktualis";
-    fetch('http://localhost:8000/server.php', {
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', {
       method: 'POST',
       body: JSON.stringify({ emailCim: emailMost, jogosultsag: bejelJog, mod: modRef.current }),
     })
@@ -650,7 +650,7 @@ function App() {
 
   const adminVeglegesitesVissza = (targy, felev, szam) => {
     modRef.current = "adminVeglegesitesVissza";
-    fetch('http://localhost:8000/server.php', {
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', {
       method: 'POST',
       body: JSON.stringify({ targykod: targy, veglegesites: szam, mod: modRef.current }),
     })
@@ -687,7 +687,7 @@ function App() {
     setMod("ujOktato");
     modRef.current = "ujOktato";
     
-    fetch('http://localhost:8000/server.php', {
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', {
       method: 'POST',
       body: JSON.stringify({ email: emailRef.current, jelsz: jelszRef.current, nev: nevRef.current, jogosultsag: jogosultsag, telszam: telszamRef.current, mod: modRef.current }),
     })
@@ -723,7 +723,7 @@ function App() {
     e.preventDefault();
     setMod("ujSzak");
     modRef.current = "ujSzak";
-    fetch('http://localhost:8000/server.php', {
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', {
       method: 'POST',
       body: JSON.stringify({ emailCim: email, szak: szakRef.current, mod: modRef.current }),
     })
@@ -760,7 +760,7 @@ function App() {
     setMod("ujFelev");
     modRef.current = "ujFelev";
 
-    fetch('http://localhost:8000/server.php', {
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', {
       method: 'POST',
       body: JSON.stringify({ felev: felevRef.current, mod: modRef.current }),
     })
@@ -796,7 +796,7 @@ function App() {
     //e.preventDefault();
     setMod("napOktHozzarendel");
     modRef.current = "napOktHozzarendel";
-    fetch('http://localhost:8000/server.php', {
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', {
       method: 'POST',
       body: JSON.stringify({ emailCim: oktatoNap, targykod: targykodRef.current, mod: modRef.current }),
     })
@@ -833,7 +833,7 @@ function App() {
     //e.preventDefault();
     setMod("levOktHozzarendel");
     modRef.current = "levOktHozzarendel";
-    fetch('http://localhost:8000/server.php', {
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', {
       method: 'POST',
       body: JSON.stringify({ emailCim: oktatoLev, targykod: targykodRef.current, mod: modRef.current }),
     })
@@ -867,7 +867,7 @@ function App() {
 
   const tanszekvezetoVeglegesites = (targy, felev) => {
     modRef.current = "tanszekvezetoVeglegesites";
-    fetch('http://localhost:8000/server.php', {
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', {
       method: 'POST',
       body: JSON.stringify({ targykod: targy, felev: felev, mod: modRef.current }),
     })
@@ -901,7 +901,7 @@ function App() {
     //e.preventDefault();
     setMod("TOmegjMentes");
     modRef.current = "TOmegjMentes";
-    fetch('http://localhost:8000/server.php', {
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', {
       method: 'POST',
       body: JSON.stringify({ tiMegj: tiMegjRef.current, targykod: targykodRef.current, felev: felevRef.current, mod: modRef.current }),
     })
@@ -936,7 +936,7 @@ function App() {
   const handleSubmitMasikSzak = (e) => {
     e.preventDefault();
     modRef.current = "masikSzak";
-    fetch('http://localhost:8000/server.php', {
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', {
       method: 'POST',
       body: JSON.stringify({ targykod: targykodRef.current, szak: szakRef.current, mod: modRef.current }),
     })
@@ -970,7 +970,7 @@ function App() {
   const handleSubmitUjTargy = (e) => {
     e.preventDefault();
     modRef.current = "ujTargy";
-    fetch('http://localhost:8000/server.php', {
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', {
       method: 'POST',
       body: JSON.stringify({ targykod: targykodRef.current, targynev: targynevRef.current, kovetelmeny: kovetelmenyRef.current, szervEgys: szervEgysRef.current, tipus: tipusRef.current, kredit: kreditRef.current, szak: szakRef.current, evfolyam: evfolyamRef.current, evszak: evszakRef.current, oraszamNap: napOraRef.current, oraszamLev: levOraRef.current, felev: felevRef.current, mod: modRef.current }),
     })
@@ -1003,7 +1003,7 @@ function App() {
 
   const TOveglegesites = (targy, felev) => {
     modRef.current = "TOveglegesites";
-    fetch('http://localhost:8000/server.php', {
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', {
       method: 'POST',
       body: JSON.stringify({ targykod: targy, felev: felev, mod: modRef.current }),
     })
@@ -1037,7 +1037,7 @@ function App() {
     //e.preventDefault();
     setMod("OktMegjMentes");
     modRef.current = "OktMegjMentes";
-    fetch('http://localhost:8000/server.php', {
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', {
       method: 'POST',
       body: JSON.stringify({ oktMegj: oktMegjRef.current, targykod: targykodRef.current, felev: felevRef.current, mod: modRef.current }),
     })
@@ -1074,7 +1074,7 @@ function App() {
     //e.preventDefault();
     setMod("OktMegjLevMentes");
     modRef.current = "OktMegjLevMentes";
-    fetch('http://localhost:8000/server.php', {
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', {
       method: 'POST',
       body: JSON.stringify({ oktMegj: oktMegjRef.current, targykod: targykodRef.current, felev: felevRef.current, mod: modRef.current }),
     })
@@ -1108,7 +1108,7 @@ function App() {
 
   const oktatoVeglegesites = (targy, felev) => {
     modRef.current = "oktatoVeglegesites";
-    fetch('http://localhost:8000/server.php', {
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', {
       method: 'POST',
       body: JSON.stringify({ targykod: targy, felev: felev, emailCim: emailMost, mod: modRef.current }),
     })
@@ -1141,7 +1141,7 @@ function App() {
   const osszesOktato = () => {
     setMod("osszesOktato");
     modRef.current = "osszesOktato";
-    fetch('http://localhost:8000/server.php', {
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', {
       method: 'POST',
       body: JSON.stringify({ mod: modRef.current }),
     })
@@ -1174,7 +1174,7 @@ function App() {
   const osszesSzakfelelos = () => {
     setMod("osszesSzakfelelos");
     modRef.current = "osszesSzakfelelos";
-    fetch('http://localhost:8000/server.php', {
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', {
       method: 'POST',
       body: JSON.stringify({ mod: modRef.current }),
     })
@@ -1207,7 +1207,7 @@ function App() {
   const osszesJogosultsag = () => {
     setMod("osszesJogosultsag");
     modRef.current = "osszesJogosultsag";
-    fetch('http://localhost:8000/server.php', {
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', {
       method: 'POST',
       body: JSON.stringify({ mod: modRef.current }),
     })
@@ -1240,7 +1240,7 @@ function App() {
   const osszesSajatSzak = () => {
     modRef.current = "osszesSajatSzak";
     emailRef.current = emailMost;
-    fetch('http://localhost:8000/server.php', {
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', {
       method: 'POST',
       body: JSON.stringify({ emailCim: emailRef.current, mod: modRef.current }),
     })
@@ -1273,7 +1273,7 @@ function App() {
     setMod("osszesSzak");
     modRef.current = "osszesSzak";
     emailRef.current = emailMost;
-    fetch('http://localhost:8000/server.php', {
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', {
       method: 'POST',
       body: JSON.stringify({ mod: modRef.current }),
     })
@@ -1307,7 +1307,7 @@ function App() {
     setMod("szakEgyedul");
     modRef.current = "szakEgyedul";
     emailRef.current = emailMost;
-    fetch('http://localhost:8000/server.php', {
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', {
       method: 'POST',
       body: JSON.stringify({ emailCim: emailRef.current, mod: modRef.current }),
     })
@@ -1341,7 +1341,7 @@ function App() {
     setMod("felevEgyedul");
     modRef.current = "felevEgyedul";
     emailRef.current = emailMost;
-    fetch('http://localhost:8000/server.php', {
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', {
       method: 'POST',
       body: JSON.stringify({ mod: modRef.current }),
     })
@@ -1375,7 +1375,7 @@ function App() {
     e.preventDefault();
     setMod("szakInditasa");
     modRef.current = "szakInditasa";
-    fetch('http://localhost:8000/server.php', requestOptionsSzakInditasa)
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', requestOptionsSzakInditasa)
     .then(response => {
       if (!response.ok) {
         throw new Error('response not ok');
@@ -1411,7 +1411,7 @@ function App() {
     targymegadasFelevRef.current = targymegadasFelev;
     setFelev(targymegadasFelev);
     targymegadasSzakRef.current = targymegadasSzak;
-    fetch('http://localhost:8000/server.php', {
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', {
       method: 'POST',
       body: JSON.stringify({ felev: targymegadasFelevRef.current, szaknev: targymegadasSzakRef.current, mod: modRef.current }),
     })
@@ -1448,7 +1448,7 @@ function App() {
     console.log(felev);
     targymegadasSzakRef.current = targymegadasSzak;
     console.log(targymegadasSzakRef.current);
-    fetch('http://localhost:8000/server.php', requestOptionsTargyImport)
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', requestOptionsTargyImport)
     .then(response => {
       if (!response.ok) {
         throw new Error('response not ok');
@@ -1477,7 +1477,7 @@ function App() {
 
   const szakfelelosTargyTorles = (targy, felev) => {
     modRef.current = "szakfelelosTargyTorles";
-    fetch('http://localhost:8000/server.php', {
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', {
       method: 'POST',
       body: JSON.stringify({ targykod: targy, felev: felev, mod: modRef.current }),
     })
@@ -1510,7 +1510,7 @@ function App() {
   
   const handleChangeOnline = (targy, felev) => {
     modRef.current = "szakfelelosOnlineValtas";
-    fetch('http://localhost:8000/server.php', {
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', {
       method: 'POST',
       body: JSON.stringify({ targykod: targy, felev: felev, mod: modRef.current }),
     })
@@ -1547,7 +1547,7 @@ function App() {
 
   const handleChangeOnlineLev = (targy, felev) => {
     modRef.current = "szakfelelosOnlineLevValtas";
-    fetch('http://localhost:8000/server.php', {
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', {
       method: 'POST',
       body: JSON.stringify({ targykod: targy, felev: felev, mod: modRef.current }),
     })
@@ -1584,7 +1584,7 @@ function App() {
 
   const szakfelelosVeglegesites = (targy, felev) => {
     modRef.current = "szakfelelosVeglegesites";
-    fetch('http://localhost:8000/server.php', {
+    fetch('https://szemeszterinditas-szerver.vercel.app/server.php', {
       method: 'POST',
       body: JSON.stringify({ targykod: targy, felev: felev, emailCim: emailMost, mod: modRef.current }),
     })
